@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Exchange {
+  BINANCE
+  COINBASE
+  KRAKEN
+}
+
+enum CredentialStatus {
+  ACTIVE
+  REVOKED
+  INVALID
+}
+
+enum EventType {
+  BALANCE_SYNC
+  CREDENTIAL_CREATED
+  CREDENTIAL_REVOKED
+  SIGNAL_DETECTED
+  RISK_REJECTED
+  ORDER_BLOCKED
+}
+
+model ExchangeCredential {
+  id            String           @id @default(uuid())
+  userId        String
+  exchange      Exchange
+  label         String
+  apiKeyCipher  String
+  secretCipher  String
+  passphraseCipher String?
+  status        CredentialStatus @default(ACTIVE)
+  lastVerifiedAt DateTime?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  balanceSnapshots BalanceSnapshot[]
+  auditEvents   AuditEvent[]
+
+  @@unique([userId, exchange, label])
+  @@index([userId, status])
+}
+
+model BalanceSnapshot {
+  id           String             @id @default(uuid())
+  credentialId String
+  asset        String
+  free         Decimal            @db.Decimal(36, 18)
+  used         Decimal            @db.Decimal(36, 18)
+  total        Decimal            @db.Decimal(36, 18)
+  observedAt   DateTime           @default(now())
+  credential   ExchangeCredential @relation(fields: [credentialId], references: [id], onDelete: Cascade)
+
+  @@index([credentialId, observedAt])
+}
+
+model AuditEvent {
+  id           String             @id @default(uuid())
+  userId       String
+  credentialId String?
+  type         EventType
+  requestId    String
+  payload      Json
+  createdAt    DateTime           @default(now())
+  credential   ExchangeCredential? @relation(fields: [credentialId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([requestId])
+}

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Asteria AI trading intelligence workspace">
+  <title>Asteria AI | Trading Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <section class="login-view" id="loginView">
+      <div class="login-copy">
+        <div class="brand-mark"><span class="brand-star">✦</span> ASTERIA <span class="brand-ai">AI</span></div>
+        <div class="eyebrow">AUTONOMOUS MARKET INTELLIGENCE / 01</div>
+        <h1>Trade with a<br><em>clearer signal.</em></h1>
+        <p class="lead">A focused workspace for finding, simulating, and monitoring arbitrage across the digital asset market.</p>
+        <div class="feature-row">
+          <div><span class="feature-icon">◌</span><strong>Real-time</strong><small>Market scanning</small></div>
+          <div><span class="feature-icon">↗</span><strong>AI-assisted</strong><small>Fee &amp; slippage models</small></div>
+          <div><span class="feature-icon">◇</span><strong>Paper-first</strong><small>Risk controls</small></div>
+        </div>
+        <div class="instructions"><span class="step-count">01</span><span>Add exchange connections and choose a strategy.<br><b>Start with paper mode</b> to validate opportunities before execution.</span></div>
+      </div>
+      <div class="login-panel panel-glass">
+        <div class="panel-topline"><span class="status-dot"></span> SYSTEM READY <span class="mono">v0.9.4</span></div>
+        <div class="login-header"><span class="mini-orbit">✦</span><div><h2>Welcome back</h2><p>Enter the workspace securely.</p></div></div>
+        <form id="loginForm">
+          <label>Workspace email<input type="email" id="emailInput" placeholder="you@workspace.com" required></label>
+          <label>Access key<div class="input-with-icon"><input type="password" placeholder="••••••••••••" required><button type="button" class="icon-button" aria-label="Show access key">◉</button></div></label>
+          <button class="primary-button full-width" type="submit"><span>Enter workspace</span><span>→</span></button>
+        </form>
+        <button class="demo-button" id="demoButton"><span>◈</span> Explore instant demo <span class="mono">NO KEY REQUIRED</span></button>
+        <div class="login-divider"><span>SECURE CONNECTION</span></div>
+        <p class="login-note">Your exchange keys stay encrypted and are never stored in this browser prototype.</p>
+        <button class="download-link" id="downloadButton">↓ Download Asteria desktop package</button>
+      </div>
+    </section>
+
+    <section class="dashboard-view hidden" id="dashboardView">
+      <header class="topbar">
+        <div class="brand-mark"><span class="brand-star">✦</span> ASTERIA <span class="brand-ai">AI</span></div>
+        <div class="topbar-center"><span class="status-dot"></span> PAPER ENGINE ONLINE <span class="mono" id="clock">00:00:00 UTC</span></div>
+        <div class="topbar-actions"><button class="icon-button" aria-label="Notifications">◌</button><button class="avatar" id="profileButton">JD</button></div>
+      </header>
+      <div class="dashboard-content">
+        <aside class="sidebar">
+          <div class="sidebar-label">WORKSPACE</div>
+          <button class="nav-item active" data-view="overview"><span>⌁</span> Overview</button>
+          <button class="nav-item" data-view="triangular"><span>△</span> Triangular arb</button>
+          <button class="nav-item" data-view="cross"><span>⇄</span> Cross-exchange</button>
+          <button class="nav-item" data-view="activity"><span>◫</span> Activity log</button>
+          <div class="sidebar-label side-label-lower">CONFIGURATION</div>
+          <button class="nav-item" data-view="connections"><span>⌘</span> Connections</button>
+          <button class="nav-item" data-view="risk"><span>⊙</span> Risk controls</button>
+          <div class="sidebar-footer"><div class="plan-badge">◈ <span>DEMO PLAN</span></div><button class="upgrade-link" id="upgradeLink">Unlock live plans →</button></div>
+        </aside>
+        <div class="main-panel">
+          <div class="page-heading"><div><div class="eyebrow">WEDNESDAY, 23 SEPTEMBER 2026</div><h1 id="pageTitle">Command center</h1><p id="pageSubtitle">A calm view of the market signals worth your attention.</p></div><button class="outline-button" id="scanButton"><span class="pulse-ring"></span> Run market scan</button></div>
+          <div class="metrics-grid">
+            <article class="metric-card"><div class="metric-label">OPPORTUNITIES <span class="live-label">LIVE</span></div><strong id="opportunityCount">07</strong><span class="metric-delta positive">+2 since last scan</span><div class="sparkline cyan"></div></article>
+            <article class="metric-card"><div class="metric-label">24H SIMULATED P&amp;L</div><strong id="pnlValue">+$842.60</strong><span class="metric-delta positive">+6.8% vs. yesterday</span><div class="sparkline green"></div></article>
+            <article class="metric-card"><div class="metric-label">AI CONFIDENCE</div><strong id="confidenceValue">94.2%</strong><span class="metric-delta">Stable signal quality</span><div class="confidence-bar"><i></i></div></article>
+            <article class="metric-card muted-card"><div class="metric-label">ENGINE STATUS</div><strong class="engine-status"><span class="status-dot"></span> PAPER</strong><span class="metric-delta">Live execution is gated</span><div class="engine-line"></div></article>
+          </div>
+          <section class="autonomy-panel panel-glass"><div class="autonomy-copy"><div class="eyebrow">AUTONOMOUS PAPER ENGINE / GEMINI ADAPTER</div><h2>Continuous opportunity analysis</h2><p id="engineMessage">The local risk engine is ready to score both strategies. Live orders remain disabled.</p><div class="engine-tags"><span><i class="status-dot"></i> Market feed simulated</span><span>TP/SL bounded</span><span>Live execution locked</span></div></div><div class="autonomy-actions"><span class="engine-mode" id="engineMode">PAUSED</span><button class="primary-button" id="autonomyToggle">Start paper engine <span>→</span></button></div></section>
+          <section class="analysis-panel panel-glass"><div class="section-heading"><div><div class="eyebrow">MODEL OUTPUT / LAST DECISION</div><h2>Risk-aware trade plan</h2></div><span class="mono" id="decisionTime">WAITING FOR SCAN</span></div><div class="analysis-grid"><div class="analysis-route"><span class="strategy-icon tri" id="decisionIcon">△</span><div><b id="decisionName">No active paper position</b><small id="decisionRoute">Run the paper engine to analyze a route.</small></div></div><div class="analysis-value"><span>TAKE PROFIT</span><b id="takeProfit">--</b></div><div class="analysis-value"><span>STOP LOSS</span><b id="stopLoss">--</b></div><div class="analysis-value"><span>CONFIDENCE</span><b id="decisionConfidence">--</b></div></div></section>
+          <div class="workspace-grid">
+            <section class="chart-panel panel-glass"><div class="section-heading"><div><div class="eyebrow">MARKET PULSE / BTC-USDT</div><h2>Signal landscape</h2></div><div class="chart-controls"><button class="chart-range active">1H</button><button class="chart-range">1D</button><button class="chart-range">1W</button></div></div><div class="chart-wrap"><div class="y-axis"><span>$68.8k</span><span>$68.4k</span><span>$68.0k</span><span>$67.6k</span></div><svg class="market-chart" viewBox="0 0 700 240" preserveAspectRatio="none" aria-label="Simulated BTC signal chart"><defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#59d6d0" stop-opacity=".22"/><stop offset="1" stop-color="#59d6d0" stop-opacity="0"/></linearGradient></defs><path class="grid-lines" d="M0 20H700 M0 80H700 M0 140H700 M0 200H700"/><path class="area" d="M0 183 C36 154,45 168,74 151 S115 172,145 138 S191 122,216 142 S250 109,280 118 S322 81,350 101 S388 64,421 83 S452 126,480 105 S515 124,544 73 S586 89,615 50 S650 69,700 28 L700 240 L0 240Z"/><path class="line" d="M0 183 C36 154,45 168,74 151 S115 172,145 138 S191 122,216 142 S250 109,280 118 S322 81,350 101 S388 64,421 83 S452 126,480 105 S515 124,544 73 S586 89,615 50 S650 69,700 28"/><circle cx="615" cy="50" r="5" class="chart-point"/></svg></div><div class="chart-footer"><span><i class="legend-dot"></i> AI confidence band</span><span>Last update <b id="lastUpdate">12 sec ago</b></span></div></section>
+            <section class="opportunities-panel panel-glass"><div class="section-heading"><div><div class="eyebrow">AI WATCHLIST</div><h2>Top opportunities</h2></div><button class="text-button" data-view-target="activity">View all →</button></div><div class="opportunity-list" id="opportunityList"><button class="opportunity-row" data-strategy="triangular"><span class="op-icon tri">△</span><span class="op-name"><b>BTC → ETH → USDT</b><small>Triangular / Kraken</small></span><span class="op-return">+0.84%<small>92% confidence</small></span><span class="row-arrow">→</span></button><button class="opportunity-row" data-strategy="cross"><span class="op-icon cross">⇄</span><span class="op-name"><b>ETH / USDT</b><small>Coinbase → Binance</small></span><span class="op-return">+0.62%<small>88% confidence</small></span><span class="row-arrow">→</span></button><button class="opportunity-row" data-strategy="triangular"><span class="op-icon tri">△</span><span class="op-name"><b>SOL → USDC → USDT</b><small>Triangular / OKX</small></span><span class="op-return">+0.41%<small>84% confidence</small></span><span class="row-arrow">→</span></button></div></section>
+          </div>
+          <section class="strategy-section"><div class="section-heading"><div><div class="eyebrow">AUTOMATION MODULES</div><h2>Choose your edge</h2></div><span class="module-note"><span class="status-dot"></span> Both modules available</span></div><div class="strategy-grid"><article class="strategy-card selected"><div class="strategy-top"><span class="strategy-icon tri">△</span><span class="module-status">READY</span></div><h3>Triangular arbitrage</h3><p>Trace price inefficiencies across three pairs on a single exchange.</p><div class="route mono">BTC <span>›</span> ETH <span>›</span> SOL <span>›</span> USDT</div><div class="card-footer"><span>AI model <b>Gemini Edge</b></span><button class="small-button" data-launch="triangular">Configure <span>→</span></button></div></article><article class="strategy-card"><div class="strategy-top"><span class="strategy-icon cross">⇄</span><span class="module-status">READY</span></div><h3>Cross-exchange</h3><p>Compare venues, fees, and depth to surface executable spread.</p><div class="route mono">COINBASE <span>⇄</span> BINANCE <span>⇄</span> KRAKEN</div><div class="card-footer"><span>AI model <b>Gemini Flux</b></span><button class="small-button" data-launch="cross">Configure <span>→</span></button></div></article></div></section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop hidden" id="subscriptionModal"><section class="modal panel-glass"><button class="modal-close" id="closeModal" aria-label="Close">×</button><div class="eyebrow">ACCESS CONTROL / 02</div><h2>Unlock your edge.</h2><p class="modal-intro">Live execution stays off until a plan is active. Start with simulation, or choose a plan for full workspace access.</p><div class="plans"><button class="plan-card" data-plan="3 Day"><span class="plan-name">Starter</span><strong>$28 <small>/ 3 days</small></strong><span>Futures basics · Signal scans</span><i>Choose plan →</i></button><button class="plan-card featured" data-plan="Monthly"><span class="plan-tag">MOST POPULAR</span><span class="plan-name">Operator</span><strong>$96 <small>/ month</small></strong><span>Futures tools · Auto-monitoring</span><i>Choose plan →</i></button><button class="plan-card" data-plan="VIP Yearly"><span class="plan-name">VIP member</span><strong>$518 <small>/ year</small></strong><span>55% off · API access · Updates</span><i>Choose plan →</i></button></div><p class="payment-note">Crypto checkout integration is ready for a secure server-side provider. No payment is taken in this demo.</p></section></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
